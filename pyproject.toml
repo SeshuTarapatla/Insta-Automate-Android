@@ -1,0 +1,9 @@
+[project]
+name = "insta-automate-android"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "dotenv>=0.9.9",
+    "rich>=14.0.0",
+    "telethon>=1.40.0",
+]
