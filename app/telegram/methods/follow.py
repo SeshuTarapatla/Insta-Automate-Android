@@ -22,7 +22,7 @@ class Follow:
         # Send random n profiles
         self.count = 0
         log.info("--- Random Profiles Started ---")
-        banner = f"Batch Follow ({args.fnum}): [gray85 italic]{timestamp()}[/]"
+        banner = f"Batch Follow ({args.fnum}): {timestamp()}"
         self.client.send_message(self.channel, banner)  # type: ignore
         log.info(banner)
         while self.count < args.fnum:
