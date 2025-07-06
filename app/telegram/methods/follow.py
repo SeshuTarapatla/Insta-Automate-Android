@@ -21,15 +21,15 @@ class Follow:
         self.fetch_total()
         # Send random n profiles
         self.count = 0
-        log.info(" Random Profiles Started ".center(50, "-"))
-        banner = f"Batch Follow ({args.fnum}): {timestamp()}"
+        log.info("--- Random Profiles Started ---")
+        banner = f"Batch Follow ({args.fnum}): [bold green italic]{timestamp()}[/]"
         self.client.send_message(self.channel, banner)  # type: ignore
         log.info(banner)
         while self.count < args.fnum:
             self.resend()
             self.count += 1
         log.print()
-        log.info(" Random Profiles Completed ".center(50, "-") + "\n")
+        log.info("--- Random Profiles Completed ---" + "\n")
 
     def resend(self) -> None:
         index = randint(0, self.total)
@@ -37,7 +37,7 @@ class Follow:
         message = self.client.get_messages(self.channel, limit=1, add_offset=index)[0]  # type: ignore
         account = str(message.message).removeprefix("@")
         timestamp = message.date.strftime("%Y:%m:%d %H:%M:%S")
-        log.info(f"{str(self.count + 1).rjust(3)}. {account} : Message({rel_index}, {timestamp})")
+        log.info(f"{str(self.count + 1).rjust(3)}. [bold purple4]{account}[/] : [magenta]Message([red]{rel_index}[/], [cyan]{timestamp}[magenta])[/]")
         self.client.send_file(
             self.channel, file=message.photo, caption=message.text, parse_mode="md"
         )  # type: ignore

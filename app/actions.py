@@ -4,6 +4,6 @@ from utils.logger import log
 
 def follow() -> None:
     """Action: FOLLOW -> Pick random N account to follow."""
-    log.info("Action: [yellow]FOLLOW[/]\n")
+    log.info("Action: [bold yellow]FOLLOW[/]\n")
     entity = Follow()
     entity.start()
