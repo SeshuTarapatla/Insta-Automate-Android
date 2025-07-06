@@ -36,8 +36,8 @@ class Follow:
         rel_index = self.total - index
         message = self.client.get_messages(self.channel, limit=1, add_offset=index)[0]  # type: ignore
         account = str(message.message).removeprefix("@")
-        timestamp = message.date.strftime("%Y:%m:%d %H:%M:%S")
-        log.info(f"{str(self.count + 1).rjust(3)}. [bold purple4]{account}[/] : [magenta]Message([red]{rel_index}[/], [cyan]{timestamp}[magenta])[/]")
+        timestamp = message.date.strftime("%Y:%m:%d")
+        log.info(f"{str(self.count + 1).rjust(2)}. [cyan]{account}[/] : Message([bold red]{rel_index}[/], [blue]{timestamp}[magenta])[/]")
         self.client.send_file(
             self.channel, file=message.photo, caption=message.text, parse_mode="md"
         )  # type: ignore
